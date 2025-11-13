@@ -1,0 +1,5 @@
+{
+  "name": "Calculadora de Alongamento de Cordoalhas",
+  "description": "Uma aplicação web para calcular o alongamento de cordoalhas de aço para protensão, com base no tipo de armadura e na força de protensão aplicada.",
+  "requestFramePermissions": []
+}
