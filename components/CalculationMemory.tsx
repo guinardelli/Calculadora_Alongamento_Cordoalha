@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { CalculationResult } from '../types';
 
@@ -18,50 +17,42 @@ export const CalculationMemory: React.FC<CalculationMemoryProps> = ({ result }) 
     const intermediateCalc = strandInfo.area_cm2 * strandInfo.modulus_elasticity;
 
     return (
-        <div className="mt-8 pt-6 border-t border-slate-200">
-            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Memória de Cálculo Detalhada</h3>
-            <div className="bg-slate-50 p-6 rounded-lg border border-slate-200 space-y-6">
-                
-                {/* Formula */}
+        <section>
+            <h2 className="text-2xl font-bold text-center text-white mb-6 uppercase tracking-wider">Memória de Cálculo</h2>
+            <div className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-6 clip-rhomboid-lg space-y-6">
                 <div>
-                    <p className="font-semibold text-slate-700">Fórmula Utilizada:</p>
-                    <p className="text-center bg-white p-3 rounded-md text-lg font-mono tracking-wider shadow-sm mt-1">
-                        ΔL/m = Fp / (A × E)
-                    </p>
-                </div>
-
-                {/* Variable Definitions */}
-                <div>
-                    <p className="font-semibold text-slate-700 mb-2">Onde:</p>
-                    <ul className="list-disc list-inside space-y-1 text-slate-600">
-                        <li><span className="font-mono font-semibold">ΔL/m</span>: Alongamento por metro (cm/m)</li>
-                        <li><span className="font-mono font-semibold">Fp</span>: Força de protensão aplicada (kgf)</li>
-                        <li><span className="font-mono font-semibold">A</span>: Área da seção do aço (cm²)</li>
-                        <li><span className="font-mono font-semibold">E</span>: Módulo de elasticidade (kgf/mm²)</li>
-                    </ul>
-                </div>
-
-                {/* Substituted Values */}
-                <div>
-                    <p className="font-semibold text-slate-700 mb-2">Valores Aplicados:</p>
-                    <div className="space-y-2 text-slate-800">
-                         <p className="font-mono">Fp = {formatNumber(appliedForce_kgf, 2)} kgf</p>
-                         <p className="font-mono">A = {formatNumber(strandInfo.area_cm2, 4)} cm²</p>
-                         <p className="font-mono">E = {formatNumber(strandInfo.modulus_elasticity, 0)} kgf/mm²</p>
+                    <h3 className="font-semibold text-white uppercase tracking-wider text-sm">Fórmula:</h3>
+                    <div className="mt-2 p-4 bg-[#101010] border border-[var(--dark-border)] clip-rhomboid-sm text-center">
+                        <code className="text-lg font-mono text-[var(--primary-yellow)]">ΔL/m = Fp / (A × E)</code>
                     </div>
                 </div>
-
-                {/* Calculation Steps */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 className="font-semibold text-white uppercase tracking-wider text-sm">Onde:</h3>
+                        <ul className="mt-2 space-y-1 text-[var(--dark-text-secondary)] text-sm">
+                            <li><strong className="text-white">ΔL/m:</strong> Alongamento por metro</li>
+                            <li><strong className="text-white">Fp:</strong> Força de protensão</li>
+                            <li><strong className="text-white">A:</strong> Área da seção do aço</li>
+                            <li><strong className="text-white">E:</strong> Módulo de elasticidade</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 className="font-semibold text-white uppercase tracking-wider text-sm">Valores Aplicados:</h3>
+                        <div className="mt-2 space-y-1 text-[var(--dark-text-secondary)] font-mono text-sm">
+                            <p>Fp = {formatNumber(appliedForce_kgf, 2)} kgf</p>
+                            <p>A  = {formatNumber(strandInfo.area_cm2, 4)} cm²</p>
+                            <p>E  = {formatNumber(strandInfo.modulus_elasticity, 0)} kgf/mm²</p>
+                        </div>
+                    </div>
+                </div>
                 <div>
-                    <p className="font-semibold text-slate-700 mb-2">Passo a Passo:</p>
-                    <div className="space-y-3 text-slate-800">
-                        <p className="font-mono">1. Calcular o denominador (A × E):</p>
-                        <p className="pl-4 font-mono">{formatNumber(strandInfo.area_cm2, 4)} × {formatNumber(strandInfo.modulus_elasticity, 0)} = {formatNumber(intermediateCalc, 2)}</p>
-                        <p className="font-mono">2. Calcular o alongamento (Fp / resultado anterior):</p>
-                        <p className="pl-4 font-mono">{formatNumber(appliedForce_kgf, 2)} / {formatNumber(intermediateCalc, 2)} = <span className="font-bold text-blue-700">{formatNumber(elongation_cm_m, 4)} cm/m</span></p>
+                    <h3 className="font-semibold text-white uppercase tracking-wider text-sm">Passo a Passo:</h3>
+                    <div className="mt-2 space-y-3 text-[var(--dark-text-secondary)] text-sm">
+                        <p>1. <span className="font-mono ml-2">{formatNumber(strandInfo.area_cm2, 4)} × {formatNumber(strandInfo.modulus_elasticity, 0)} = {formatNumber(intermediateCalc, 2)}</span></p>
+                        <p>2. <span className="font-mono ml-2">{formatNumber(appliedForce_kgf, 2)} / {formatNumber(intermediateCalc, 2)} = <strong className="text-[var(--primary-yellow)]">{formatNumber(elongation_cm_m, 4)} cm/m</strong></span></p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };

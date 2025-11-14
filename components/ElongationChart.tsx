@@ -27,6 +27,13 @@ interface ElongationChartProps {
     result: CalculationResult;
 }
 
+const textColor = '#999999';
+const titleColor = '#EAEAEA';
+const gridColor = '#2a2a2a';
+const primaryColor = '#FFD200';
+const secondaryColor = '#EAEAEA';
+
+
 export const ElongationChart: React.FC<ElongationChartProps> = ({ result }) => {
     const { strandInfo, elongation_cm_m, appliedForce_kgf } = result;
 
@@ -41,8 +48,8 @@ export const ElongationChart: React.FC<ElongationChartProps> = ({ result }) => {
                         { x: 0, y: 0 },
                         { x: strandInfo.fp_max_kgf, y: maxElongation },
                     ],
-                    borderColor: 'rgb(59, 130, 246)',
-                    backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                    borderColor: primaryColor,
+                    backgroundColor: 'rgba(255, 210, 0, 0.5)',
                     tension: 0.1,
                     pointRadius: 0,
                     borderWidth: 2,
@@ -50,8 +57,8 @@ export const ElongationChart: React.FC<ElongationChartProps> = ({ result }) => {
                 {
                     label: 'Ponto Calculado',
                     data: [{ x: appliedForce_kgf, y: elongation_cm_m }],
-                    borderColor: 'rgb(239, 68, 68)',
-                    backgroundColor: 'rgb(239, 68, 68)',
+                    borderColor: secondaryColor,
+                    backgroundColor: secondaryColor,
                     pointRadius: 6,
                     pointHoverRadius: 8,
                     showLine: false,
@@ -90,31 +97,47 @@ export const ElongationChart: React.FC<ElongationChartProps> = ({ result }) => {
                     title: {
                         display: true,
                         text: 'Força Aplicada (kgf)',
+                        color: titleColor,
                         font: {
                             weight: 'bold',
                         }
                     },
+                    grid: {
+                        color: gridColor,
+                    },
+                    ticks: {
+                        color: textColor,
+                    }
                 },
                 y: {
                     beginAtZero: true,
                     title: {
                         display: true,
                         text: 'Alongamento (cm/m)',
+                         color: titleColor,
                          font: {
                             weight: 'bold',
                         }
                     },
+                    grid: {
+                        color: gridColor,
+                    },
+                    ticks: {
+                        color: textColor,
+                    }
                 },
             },
         };
     }, []);
 
     return (
-        <div className="mt-8 pt-6 border-t border-slate-200">
-            <h3 className="text-xl font-bold text-slate-800 mb-4 text-center">Gráfico: Força vs. Alongamento</h3>
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 relative" style={{ height: '300px' }}>
-                <Line options={chartOptions} data={chartData} />
+        <section>
+            <h2 className="text-2xl font-bold text-center text-white mb-6 uppercase tracking-wider">Gráfico: Força vs. Alongamento</h2>
+            <div className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-2 clip-rhomboid-lg">
+                <div className="clip-rhomboid-md overflow-hidden p-4 relative" style={{ height: '400px' }}>
+                    <Line options={chartOptions} data={chartData} />
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
