@@ -19,10 +19,10 @@ export const CalculationMemory: React.FC<CalculationMemoryProps> = ({ result }) 
     return (
         <section>
             <h2 className="text-2xl font-bold text-center text-white mb-6 uppercase tracking-wider">Memória de Cálculo</h2>
-            <div className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-6 clip-rhomboid-lg space-y-6">
+            <div className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-6 rounded-2xl space-y-6">
                 <div>
                     <h3 className="font-semibold text-white uppercase tracking-wider text-sm">Fórmula:</h3>
-                    <div className="mt-2 p-4 bg-[#101010] border border-[var(--dark-border)] clip-rhomboid-sm text-center">
+                    <div className="mt-2 p-4 bg-[#101010] border border-[var(--dark-border)] rounded-md text-center">
                         <code className="text-lg font-mono text-[var(--primary-yellow)]">ΔL/m = Fp / (A × E)</code>
                     </div>
                 </div>

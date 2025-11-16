@@ -65,7 +65,7 @@ const App: React.FC = () => {
       <div className="max-w-5xl w-full space-y-12">
         <header className="text-center">
           <div className="flex items-center justify-center gap-4 mb-2">
-            <div className="w-16 h-16 bg-[var(--primary-yellow)] flex items-center justify-center" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}>
+            <div className="w-16 h-16 bg-[var(--primary-yellow)] flex items-center justify-center rounded-2xl">
                 <svg className="w-10 h-10 text-black" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125a1.125 1.125 0 00-1.125 1.125v12.75c0 .621.504 1.125 1.125 1.125z" />
                 </svg>
@@ -77,7 +77,7 @@ const App: React.FC = () => {
 
         <main className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 space-y-8">
-            <section className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-6 clip-rhomboid-lg">
+            <section className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-6 rounded-2xl">
               <form onSubmit={handleCalculate} className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-[var(--dark-text-secondary)] uppercase tracking-wider mb-2" htmlFor="tipo-armadura">Tipo de Armadura</label>
@@ -86,7 +86,7 @@ const App: React.FC = () => {
                     name="tipo-armadura"
                     value={selectedStrandId}
                     onChange={(e) => setSelectedStrandId(e.target.value)}
-                    className="block w-full py-3 px-4 text-base border-2 border-[var(--dark-border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-yellow)] focus:border-[var(--primary-yellow)] clip-rhomboid-sm bg-[#101010] text-white"
+                    className="block w-full py-3 px-4 text-base border-2 border-[var(--dark-border)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-yellow)] focus:border-[var(--primary-yellow)] rounded-md bg-[#101010] text-white"
                   >
                     <option value="" disabled>Selecione um tipo...</option>
                     {STRAND_DATA.map(strand => (
@@ -106,7 +106,7 @@ const App: React.FC = () => {
                       placeholder="Ex: 12500"
                       value={forceInput}
                       onChange={(e) => setForceInput(e.target.value)}
-                      className="focus:ring-2 focus:ring-[var(--primary-yellow)] focus:border-[var(--primary-yellow)] block w-full pr-14 py-3 px-4 sm:text-base border-2 border-[var(--dark-border)] clip-rhomboid-sm bg-[#101010] text-white"
+                      className="focus:ring-2 focus:ring-[var(--primary-yellow)] focus:border-[var(--primary-yellow)] block w-full pr-14 py-3 px-4 sm:text-base border-2 border-[var(--dark-border)] rounded-md bg-[#101010] text-white"
                     />
                     <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
                       <span className="text-[var(--dark-text-secondary)] sm:text-sm">kgf</span>
@@ -114,13 +114,13 @@ const App: React.FC = () => {
                   </div>
                 </div>
                 {error && (
-                  <div className="p-3 bg-red-900/50 border border-red-700 text-red-300 clip-rhomboid-sm text-sm">
+                  <div className="p-3 bg-red-900/50 border border-red-700 text-red-300 rounded-md text-sm">
                     <p>{error}</p>
                   </div>
                 )}
                 <div className="grid grid-cols-2 gap-4 pt-2">
-                  <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent clip-rhomboid-sm text-sm font-bold text-black bg-[var(--primary-yellow)] hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-[var(--primary-yellow)] transition duration-150 ease-in-out uppercase tracking-wider">Calcular</button>
-                  <button type="button" onClick={handleClear} className="w-full flex justify-center py-3 px-4 border-2 border-[var(--dark-border)] clip-rhomboid-sm text-sm font-bold text-[var(--dark-text-secondary)] bg-transparent hover:border-[var(--primary-yellow)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-gray-500 transition duration-150 ease-in-out uppercase tracking-wider">Limpar</button>
+                  <button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md text-sm font-bold text-black bg-[var(--primary-yellow)] hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-[var(--primary-yellow)] transition duration-150 ease-in-out uppercase tracking-wider">Calcular</button>
+                  <button type="button" onClick={handleClear} className="w-full flex justify-center py-3 px-4 border-2 border-[var(--dark-border)] rounded-md text-sm font-bold text-[var(--dark-text-secondary)] bg-transparent hover:border-[var(--primary-yellow)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-gray-500 transition duration-150 ease-in-out uppercase tracking-wider">Limpar</button>
                 </div>
               </form>
             </section>

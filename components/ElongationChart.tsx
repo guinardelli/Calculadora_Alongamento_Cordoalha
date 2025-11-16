@@ -133,8 +133,8 @@ export const ElongationChart: React.FC<ElongationChartProps> = ({ result }) => {
     return (
         <section>
             <h2 className="text-2xl font-bold text-center text-white mb-6 uppercase tracking-wider">Gráfico: Força vs. Alongamento</h2>
-            <div className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-2 clip-rhomboid-lg">
-                <div className="clip-rhomboid-md overflow-hidden p-4 relative" style={{ height: '400px' }}>
+            <div className="bg-[var(--dark-card)] border border-[var(--dark-border)] p-2 rounded-2xl">
+                <div className="rounded-xl overflow-hidden p-4 relative" style={{ height: '400px' }}>
                     <Line options={chartOptions} data={chartData} />
                 </div>
             </div>
